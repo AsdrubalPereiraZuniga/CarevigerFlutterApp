@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'screens/homePage.dart';
 import 'screens/loginPage.dart';
 import 'screens/registerPage.dart';
+import 'screens/mainPage.dart';
 
 void main () {
   runApp ( const MyApp());
@@ -17,11 +18,11 @@ class MyApp extends StatelessWidget {
       title : 'CAREVIGER',
       initialRoute : '/',
       routes : {
-        '/': (context) => const LoginPageWidget(),
-        /*
-        '/login': (context) => LoginPage(),
-        '/register': (context) => RegisterPage(),
-        */
+        
+        '/': (context) => const HomePageWidget(),        
+        '/login': (context) => LoginPageWidget(),
+        '/register': (context) => RegisterPageWidget(),
+        '/main' :(context) => MainPageWidget(),
       },
     );
   }
