@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class MainPageWidget extends StatelessWidget{
-  const MainPageWidget({super.key});
+class ToolsPageWidget extends StatelessWidget{
+  const ToolsPageWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -80,33 +80,17 @@ class MainPageWidget extends StatelessWidget{
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       IconButton(
-                        onPressed: (){
-                          Navigator.pushReplacementNamed(context, '/tools');
-                        }, 
+                        onPressed: ()=>(), 
                         icon: Icon(
-                          Icons.manage_search,
+                          Icons.menu_open_outlined,
                           size: 80,
                           color: Colors.white,
                         ),
                       ),
-                    ],
-                  ),
-                ),
-                Container(
-                  width: MediaQuery.sizeOf(context).width,
-                  height: MediaQuery.sizeOf(context).height * 0.30,
-                  decoration: BoxDecoration(
-                    color: Color(0xFF2A5650),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
                       Text(
-                        'waves',
+                        'Tools',
                         style: GoogleFonts.robotoCondensed(
-                          fontSize: 30,
+                          fontSize: 40,
                           fontWeight: FontWeight.w900,
                           fontStyle: FontStyle.normal,
                           letterSpacing: 0.0,
@@ -120,58 +104,92 @@ class MainPageWidget extends StatelessWidget{
                           ],
                         ),
                       ),
-                    ],
+                    ],                  
                   ),
                 ),
                 Container(
                   width: MediaQuery.sizeOf(context).width,
-                  height: MediaQuery.sizeOf(context).height * 0.40,                    
+                  height: MediaQuery.sizeOf(context).height * 0.30,
                   decoration: BoxDecoration(
-                    color: Color(0xFF2A5650),                      
+                    color: Colors.blueGrey,
                   ),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text(
-                        '¡Press and speak!',
-                        style: GoogleFonts.robotoCondensed(
-                          fontSize: 30,
-                          fontWeight: FontWeight.w900,
-                          fontStyle: FontStyle.normal,
-                          letterSpacing: 0.0,
-                          color: Colors.white, 
-                          shadows: [
-                            Shadow(
-                              color: Colors.white54,
-                              offset: Offset(1, 1),
-                              blurRadius: 2.0,
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        width: MediaQuery.sizeOf(context).width,
-                        height: MediaQuery.sizeOf(context).height * 0.33,
-                        decoration: BoxDecoration(                          
-                          color: Colors.blueGrey,
-                          shape: BoxShape.circle,
-                          border: Border.all(
-                            color: Colors.white,
-                            width: 5
-                          )
-                        ),
-                        child: IconButton(
-                          onPressed: ()=>(),
-                          icon: Icon(Icons.mic),
-                          iconSize: 170,
-                          color: Colors.white,
-                        ),
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              IconButton(
+                                onPressed: ()=>(), 
+                                icon: Icon(Icons.manage_accounts_outlined),
+                                iconSize: 80,
+                                color: Colors.white,
+                              ),
+                              Text(
+                                'User',
+                                style: GoogleFonts.robotoCondensed(
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.w900,
+                                  fontStyle: FontStyle.normal,
+                                  letterSpacing: 1.0,
+                                  color: Colors.white, 
+                                  shadows: [
+                                    Shadow(
+                                      color: Colors.white54,
+                                      offset: Offset(2.0, 2.0),
+                                      blurRadius: 2.0,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                          Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              IconButton(
+                                onPressed: ()=>(), 
+                                icon: Image.asset(
+                                  'images/command-line.png',
+                                  width: 100,
+                                  height: 80,
+                                ),
+                              ),                                                                    
+                              Text(
+                                'Commands',
+                                style: GoogleFonts.robotoCondensed(
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.w900,
+                                  fontStyle: FontStyle.normal,
+                                  letterSpacing: 1.0,
+                                  color: Colors.white, 
+                                  shadows: [
+                                    Shadow(
+                                      color: Colors.white54,
+                                      offset: Offset(2.0, 2.0),
+                                      blurRadius: 2.0,
+                                    ),
+                                  ],
+                                ),
+                              ), 
+                            ],
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                ),                
+                ),
               ],
             ),
           ),

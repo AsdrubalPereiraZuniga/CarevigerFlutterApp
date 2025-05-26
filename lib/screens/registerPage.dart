@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:careviger/widgets/custom_button.dart';
-import 'package:careviger/widgets/custom_textFormField.dart';
+import 'package:careviger/widgets/buttons/custom_button.dart';
+import 'package:careviger/widgets/textFormField/custom_textFormField.dart';
 
 class RegisterPageWidget extends StatelessWidget{
   const RegisterPageWidget({ super.key });
 
   @override
   Widget build(BuildContext context) {
+    var sizeWindow = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();

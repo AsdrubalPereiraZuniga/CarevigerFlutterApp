@@ -3,6 +3,7 @@ import 'screens/homePage.dart';
 import 'screens/loginPage.dart';
 import 'screens/registerPage.dart';
 import 'screens/mainPage.dart';
+import 'screens/toolsPage.dart';
 
 void main () {
   runApp ( const MyApp());
@@ -17,12 +18,13 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,    
       title : 'CAREVIGER',
       initialRoute : '/',
-      routes : {
-        
-        '/': (context) => const HomePageWidget(),        
+      routes : {   
+
+        '/': (context) => const HomePageWidget(),      
         '/login': (context) => LoginPageWidget(),
         '/register': (context) => RegisterPageWidget(),
-        '/main' :(context) => MainPageWidget(),
+        '/main' : (context) => MainPageWidget(),
+        '/tools' : (context) => ToolsPageWidget(),              
       },
     );
   }
