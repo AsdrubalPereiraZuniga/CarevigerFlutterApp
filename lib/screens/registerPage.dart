@@ -1,15 +1,23 @@
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:careviger/widgets/buttons/custom_button.dart';
 import 'package:careviger/widgets/textFormField/custom_textFormField.dart';
+import 'package:careviger/widgets/textFormField/custom_passwordFormField.dart';
 
-class RegisterPageWidget extends StatelessWidget{
+class RegisterPageWidget extends StatefulWidget{
   const RegisterPageWidget({ super.key });
 
   @override
+  State<RegisterPageWidget> createState() => _RegisterPageWidget();
+}
+
+class _RegisterPageWidget extends State<RegisterPageWidget>{
+  String selected = '';
+
+  @override
   Widget build(BuildContext context) {
-    var sizeWindow = MediaQuery.of(context).size;
+    var screenSize = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -26,8 +34,8 @@ class RegisterPageWidget extends StatelessWidget{
               bottom: MediaQuery.of(context).viewInsets.bottom,
             ),
             child: Container(
-              width: MediaQuery.sizeOf(context).width,
-              height: MediaQuery.sizeOf(context).height,
+              width: screenSize.width,
+              height: screenSize.height,
               decoration: BoxDecoration(
                 color: Color(0xFF2A5650),
               ),
@@ -37,8 +45,8 @@ class RegisterPageWidget extends StatelessWidget{
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(17, 20, 0, 10),
                     child: Container(
-                      width: MediaQuery.sizeOf(context).width,
-                      height: MediaQuery.sizeOf(context).height * 0.07,
+                      width: screenSize.width,
+                      height: screenSize.height * 0.07,
                       decoration: BoxDecoration(
                         color: Color(0xFF2A5650),
                         borderRadius: BorderRadius.circular(12),
@@ -51,7 +59,7 @@ class RegisterPageWidget extends StatelessWidget{
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Text(
-                              'Create an account',
+                              'Crear una cuenta',
                               textAlign: TextAlign.center,
                               style: GoogleFonts.robotoCondensed(
                                 fontSize: 44, 
@@ -74,16 +82,11 @@ class RegisterPageWidget extends StatelessWidget{
                     ),
                   ),
                   Container(                
-                    width: MediaQuery.sizeOf(context).width * 0.9,
-                    height: MediaQuery.sizeOf(context).height * 0.85,
+                    width: screenSize.width * 0.9,
+                    height: screenSize.height * 0.85,
                     decoration: BoxDecoration(
                       color: Colors.blueGrey,
-                      borderRadius: BorderRadius.circular(12),
-                      shape: BoxShape.rectangle,
-                      border: Border.all(
-                        color: Colors.white,
-                        width: 5,
-                      ),
+                      borderRadius: BorderRadius.circular(12),                                            
                     ),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
@@ -133,16 +136,16 @@ class RegisterPageWidget extends StatelessWidget{
                         Padding(
                           padding: EdgeInsetsDirectional.only(top: 30.0),
                           child: SizedBox(
-                            width: MediaQuery.sizeOf(context).width * 0.80,
+                            width: screenSize.width * 0.80,
                             child: CustomTextformfield(
-                              text: 'Complete name'
+                              text: 'Nombre completo'
                             ),
                           ),   
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.only(top: 20.0),
                           child: SizedBox(
-                            width: MediaQuery.sizeOf(context).width * 0.80,
+                            width: screenSize.width * 0.80,
                             child: CustomTextformfield(
                               text: 'Email'
                             ),
@@ -151,110 +154,29 @@ class RegisterPageWidget extends StatelessWidget{
                         Padding(
                           padding: EdgeInsetsDirectional.only(top: 20.0),
                           child: SizedBox(
-                            width: MediaQuery.sizeOf(context).width * 0.80,
+                            width: screenSize.width * 0.80,
                             child: CustomTextformfield(
-                              text: 'User name'
+                              text: 'Nombre de usuario'
                             ),
                           ),   
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.only(top: 20.0),
                           child: SizedBox(
-                            width: MediaQuery.sizeOf(context).width * 0.80,
-                            child: TextFormField(                              
-                                autofocus: true,
-                                autofillHints: [AutofillHints.password],                              
-                                obscureText: false,
-                                focusNode: FocusNode(skipTraversal: true),
-                                decoration: InputDecoration(
-                                  labelText: 'Password',
-                                  labelStyle: GoogleFonts.robotoCondensed(
-                                    fontWeight: FontWeight.w600,
-                                    fontStyle: FontStyle.normal,
-                                    color: Colors.white,
-                                    fontSize: 20,
-                                    letterSpacing: 0.0,
-                                  ),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0xFFF1F4F8),
-                                      width: 2,
-                                    ),
-                                    borderRadius: BorderRadius.circular(12),
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Colors.blue.shade200,
-                                      width: 2,
-                                    ),
-                                    borderRadius: BorderRadius.circular(12),
-                                  ),
-                                  floatingLabelStyle: GoogleFonts.robotoCondensed(
-                                    fontSize: 30, // tamaño cuando el label flota
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.white,
-                                  ),                                
-                                  filled: true,
-                                  fillColor: Colors.blueGrey[700],
-                                  suffixIcon: Icon(
-                                    //_model.passwordVisibility
-                                      /*?*/ Icons.visibility_outlined
-                                      /*: Icons.visibility_off_outlined*/,
-                                    color: Colors.white,
-                                    size: 24,
-                                  ),
-                                ),
-                              ),
+                            width: screenSize.width * 0.80,
+                            child: CustomPasswordformfield(
+                              text: "Password"
+                            ),
                           ),   
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.only(top: 20.0),
                           child: SizedBox(
-                            width: MediaQuery.sizeOf(context).width * 0.80,
-                            child: TextFormField(                              
-                                autofocus: true,
-                                autofillHints: [AutofillHints.password],                              
-                                obscureText: false,
-                                focusNode: FocusNode(skipTraversal: true),
-                                decoration: InputDecoration(
-                                  labelText: 'Confirm password',
-                                  labelStyle: GoogleFonts.robotoCondensed(
-                                    fontWeight: FontWeight.w600,
-                                    fontStyle: FontStyle.normal,
-                                    color: Colors.white,
-                                    fontSize: 20,
-                                    letterSpacing: 0.0,
-                                  ),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0xFFF1F4F8),
-                                      width: 2,
-                                    ),
-                                    borderRadius: BorderRadius.circular(12),
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Colors.blue.shade200,
-                                      width: 2,
-                                    ),
-                                    borderRadius: BorderRadius.circular(12),
-                                  ),
-                                  floatingLabelStyle: GoogleFonts.robotoCondensed(
-                                    fontSize: 30, // tamaño cuando el label flota
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.white,
-                                  ),                                
-                                  filled: true,
-                                  fillColor: Colors.blueGrey[700],
-                                  suffixIcon: Icon(
-                                    //_model.passwordVisibility
-                                      /*?*/ Icons.visibility_outlined
-                                      /*: Icons.visibility_off_outlined*/,
-                                    color: Colors.white,
-                                    size: 24,
-                                  ),
-                                ),
-                              ),
+                            width: screenSize.width * 0.80,
+                            child: CustomPasswordformfield(
+                              text: 
+                              "Confirm Password"
+                            ),
                           ),   
                         ),
                         Padding(
@@ -267,7 +189,7 @@ class RegisterPageWidget extends StatelessWidget{
                               Padding(
                                 padding: EdgeInsetsDirectional.only(top: 8.0),
                                 child: Text(
-                                  'Gender: ',
+                                  'Genero: ',
                                   textAlign: TextAlign.center,
                                   style: GoogleFonts.robotoCondensed(
                                     fontSize: 20, 
@@ -279,29 +201,35 @@ class RegisterPageWidget extends StatelessWidget{
                                 ),
                               ),
                               Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-                              child: SizedBox(
-                                width: MediaQuery.sizeOf(context).width * 0.25,
-                                child: CustomButton(
-                                  text: 'Male', 
-                                  onPressed: (){
-                                    print('print button');
-                                  }                                                            
+                                padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                                child: SizedBox(
+                                  width: screenSize.width * 0.25,
+                                  child: CustomButton(
+                                    text: 'Masculino', 
+                                    isSelected: selected == 'Male',
+                                    onPressed: (){
+                                      setState(() {
+                                        selected = 'Male';
+                                      });
+                                    }                                                            
+                                  ),
                                 ),
                               ),
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-                              child: SizedBox(
-                                width: MediaQuery.sizeOf(context).width * 0.25,
-                                child: CustomButton(
-                                  text: 'Female', 
-                                  onPressed: (){
-                                    print('print button');
-                                  }                                                            
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                                child: SizedBox(
+                                  width: screenSize.width * 0.25,
+                                  child: CustomButton(
+                                    text: 'Femenino', 
+                                    isSelected: selected == 'Female',
+                                    onPressed: (){
+                                      setState(() {
+                                        selected = 'Female';
+                                      });
+                                    }                                                            
+                                  ),
                                 ),
                               ),
-                            ),
                             ],
                           ),
                         ),
@@ -315,10 +243,11 @@ class RegisterPageWidget extends StatelessWidget{
                               Padding(
                                 padding: EdgeInsetsDirectional.only(top: 10.0),
                                 child: SizedBox(
-                                  width: MediaQuery.sizeOf(context).width * 0.6,
-                                  height: MediaQuery.sizeOf(context).height * 0.06,
+                                  width: screenSize.width * 0.6,
+                                  height: screenSize.height * 0.06,
                                   child: CustomButton(
-                                  text: 'Sing Up', 
+                                  text: 'Inscribirse', 
+                                  isSelected: false,
                                   onPressed: (){
                                     Navigator.pushReplacementNamed(context, '/login');
                                   }                                                            

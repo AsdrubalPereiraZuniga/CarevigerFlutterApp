@@ -1,14 +1,24 @@
+
+import 'package:careviger/screens/homePage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:careviger/widgets/buttons/custom_button.dart';
 import 'package:careviger/widgets/textFormField/custom_textFormField.dart';
+import 'package:careviger/widgets/textFormField/custom_passwordFormField.dart';
 
-class LoginPageWidget extends StatelessWidget{
+class LoginPageWidget extends StatefulWidget{  
   const LoginPageWidget({super.key});
 
   @override
-  Widget build(BuildContext context) {    
+ State<LoginPageWidget> createState() => _LoginPageWidget();
+}
+
+class _LoginPageWidget extends State<LoginPageWidget>{  
+
+  @override
+  Widget build(BuildContext context) { 
+    var screenSize = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -19,8 +29,8 @@ class LoginPageWidget extends StatelessWidget{
         body: SafeArea(
           top: true,
           child: Container(
-            width: MediaQuery.sizeOf(context).width,
-            height: MediaQuery.sizeOf(context).height,
+            width: screenSize.width,
+            height: screenSize.height,
             decoration: BoxDecoration(
               color: Color(0xFF2A5650),
             ),
@@ -34,8 +44,8 @@ class LoginPageWidget extends StatelessWidget{
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Container(
-                    width: MediaQuery.sizeOf(context).width,
-                    height: MediaQuery.sizeOf(context).height * 0.10,
+                    width: screenSize.width,
+                    height: screenSize.height * 0.10,
                     decoration: BoxDecoration(
                       color: Color(0xFF2A5650),
                     ),
@@ -46,7 +56,7 @@ class LoginPageWidget extends StatelessWidget{
                       children: [
                         Flexible(
                           child: Text(
-                            'CAREVIGER',
+                            'CAREGIVER',
                             textAlign: TextAlign.center,
                             style: GoogleFonts.robotoCondensed(
                               fontSize: 45, 
@@ -85,8 +95,8 @@ class LoginPageWidget extends StatelessWidget{
                         maxWidth: 570,
                       ),
                       child: Container(
-                        width: MediaQuery.sizeOf(context).width * 0.90,
-                        height: MediaQuery.sizeOf(context).height * 0.83,
+                        width: screenSize.width * 0.90,
+                        height: screenSize.height * 0.83,
                         decoration: BoxDecoration(
                           color: Colors.blueGrey,
                           borderRadius: BorderRadius.circular(12),
@@ -96,7 +106,7 @@ class LoginPageWidget extends StatelessWidget{
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              '¡Welcome!',
+                              '¡Bienvenido!',
                               textAlign: TextAlign.center,
                               style: GoogleFonts.robotoCondensed(
                                 fontSize: 36,                          
@@ -109,9 +119,9 @@ class LoginPageWidget extends StatelessWidget{
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(16, 12, 0, 24),
                               child: SizedBox(
-                                width: MediaQuery.sizeOf(context).width * 0.80,                            
+                                width: screenSize.width * 0.80,                            
                                 child: Text(
-                                'Fill out the information below in order to access your account.',
+                                'Complete la siguiente información para acceder a su cuenta.',
                                   textAlign: TextAlign.center,
                                   style: GoogleFonts.robotoCondensed(
                                     fontSize: 20,
@@ -126,7 +136,7 @@ class LoginPageWidget extends StatelessWidget{
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 16),
                               child: SizedBox(
-                                width: MediaQuery.sizeOf(context).width * 0.80,
+                                width: screenSize.width * 0.80,
                                 child: CustomTextformfield(
                                   text: 'Email'
                                 ),
@@ -135,60 +145,20 @@ class LoginPageWidget extends StatelessWidget{
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 16),
                               child: SizedBox(
-                                width: MediaQuery.sizeOf(context).width * 0.80,
-                                child: TextFormField(                              
-                                  autofocus: true,
-                                  autofillHints: [AutofillHints.password],                              
-                                  obscureText: false,
-                                  focusNode: FocusNode(skipTraversal: true),
-                                  decoration: InputDecoration(
-                                    labelText: 'Password',
-                                    labelStyle: GoogleFonts.robotoCondensed(
-                                      fontWeight: FontWeight.w600,
-                                      fontStyle: FontStyle.normal,
-                                      color: Colors.white,
-                                      fontSize: 20,
-                                      letterSpacing: 0.0,
-                                    ),
-                                    enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Colors.white,
-                                        width: 2,
-                                      ),
-                                      borderRadius: BorderRadius.circular(12),
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Colors.blue.shade200,
-                                        width: 2,
-                                      ),
-                                      borderRadius: BorderRadius.circular(12),
-                                    ),
-                                    floatingLabelStyle: GoogleFonts.robotoCondensed(
-                                      fontSize: 30, // tamaño cuando el label flota
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.white,
-                                    ),                                
-                                    filled: true,
-                                    fillColor: Colors.blueGrey[700],
-                                    suffixIcon: Icon(
-                                      //_model.passwordVisibility
-                                        /*?*/ Icons.visibility_outlined
-                                        /*: Icons.visibility_off_outlined*/,
-                                      color: Colors.white,
-                                      size: 24,
-                                    ),
-                                  ),
+                                width: screenSize.width * 0.80,
+                                child: CustomPasswordformfield(
+                                  text: 'Contraseña'
                                 ),
                               ),
                             ),
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 16),
                               child: SizedBox(
-                                width: MediaQuery.sizeOf(context).width * 0.8,
+                                width: screenSize.width * 0.8,
                                 height: 44,
                                 child: CustomButton(
-                                  text: 'Sing Up', 
+                                  text: 'Acceder', 
+                                  isSelected: false,
                                   onPressed: (){
                                     Navigator.pushReplacementNamed(context, '/main');
                                   }                                                            
@@ -198,7 +168,7 @@ class LoginPageWidget extends StatelessWidget{
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(16, 5, 16, 16),
                               child: Text(
-                                'Or sing in with',
+                                'O inicia sesión con',
                                 textAlign: TextAlign.center,
                                 style: GoogleFonts.robotoCondensed(
                                   fontSize: 20,
@@ -212,7 +182,7 @@ class LoginPageWidget extends StatelessWidget{
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(16, 0, 10, 16),
                               child: SizedBox(
-                                width: MediaQuery.sizeOf(context).width * 0.8,
+                                width: screenSize.width * 0.8,
                                 child: ElevatedButton.icon(
                                   onPressed: (){
                                     print('print button');
@@ -244,7 +214,7 @@ class LoginPageWidget extends StatelessWidget{
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(16, 0, 10, 16),
                               child: Text(
-                                '¿Don´t have an account?',
+                                '¿No tienes una cuenta?',
                                 textAlign: TextAlign.center,
                                 style: GoogleFonts.robotoCondensed(
                                   fontSize: 20,
@@ -258,10 +228,11 @@ class LoginPageWidget extends StatelessWidget{
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(16, 0, 10, 16),
                               child: SizedBox(
-                                width: MediaQuery.sizeOf(context).width * 0.55,
+                                width: screenSize.width * 0.55,
                                 child: CustomButton(
-                                  text: 'Sing Up', 
-                                onPressed: (){
+                                  text: 'Inscríbete', 
+                                  isSelected: false,
+                                  onPressed: (){
                                     Navigator.pushReplacementNamed(context, '/register');
                                   }                                                            
                                 ),

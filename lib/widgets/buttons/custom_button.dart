@@ -6,18 +6,22 @@ class CustomButton extends StatelessWidget{
 
   final String text;
   final VoidCallback onPressed;
+  final bool isSelected;
 
   const CustomButton({
     Key? key,
     required this.text,
-    required this.onPressed
+    required this.onPressed,
+    required this.isSelected
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(      
       style: ElevatedButton.styleFrom(
-        backgroundColor: Color.fromARGB(255, 132, 186, 209),
+        backgroundColor: isSelected
+        ? const Color.fromARGB(255, 50, 136, 173)
+        : Color.fromARGB(255, 132, 186, 209),
         elevation: 3,                                
         padding: EdgeInsets.zero,
         shape: RoundedRectangleBorder(
