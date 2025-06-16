@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 class VoiceService {
   static const _channel = MethodChannel('com.isadmin.voz');
 
-  static Future<String?> iniciarReconocimiento() async {
+  static Future<String?> startRecognition() async {
     var status = await Permission.microphone.status;
     if (!status.isGranted) {
       status = await Permission.microphone.request();

@@ -1,10 +1,13 @@
+import 'package:careviger/services/alarmService.dart';
 import 'package:careviger/services/callService.dart';
+import 'package:careviger/services/cameraService.dart';
 import 'package:careviger/widgets/mainWidget/mainWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:careviger/services/voiceService.dart';
 import 'package:careviger/services/permissionsService.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MainPageWidget extends StatefulWidget{
   const MainPageWidget({super.key});
@@ -23,7 +26,9 @@ class _UserVoiceState extends State<MainPageWidget>{
     super.initState();  
     requestMicrophonePermission();
     requestPermissionsContactsAndCall();
-  }   
+    requestAlarmPermission();  
+    requestVideoCameraPermission();      
+  }     
 
   Future<void> _startListening() async {
     setState(() {
@@ -31,7 +36,7 @@ class _UserVoiceState extends State<MainPageWidget>{
       _userText = 'Escuchando...';
     });    
 
-    final voiceResult = await VoiceService.iniciarReconocimiento();
+    final voiceResult = await VoiceService.startRecognition();
 
     setState(() {
       _isListening = false;
@@ -42,6 +47,29 @@ class _UserVoiceState extends State<MainPageWidget>{
       String contactName = _userText.substring(9).trim();
       makeCall(context, contactName);
     }
+    else if(_userText.toLowerCase().startsWith('alarma a la')){
+
+      String alarmText = _userText.substring(12).trim();          
+      
+      makeAlarm(context, alarmText);
+    }
+    else if(_userText.toLowerCase().startsWith('alarma a las')){            
+
+      String alarmText = _userText.substring(13).trim();          
+      
+      makeAlarm(context, alarmText);
+    }
+    
+    else if( _userText.toLowerCase().startsWith('video') ){      
+
+      makeVideo(context);
+    }
+
+    else if( _userText.toLowerCase().startsWith('foto') ){
+
+      makePhoto(context);
+    }
+
   }
   
   @override

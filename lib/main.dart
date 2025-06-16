@@ -14,7 +14,7 @@ import 'screens/mainPage.dart';
 import 'screens/toolsPage.dart';
 import 'screens/editProfile.dart';
 
-void main () {
+void main () { 
   runApp ( const MyApp());
 }
 

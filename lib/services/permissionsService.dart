@@ -43,5 +43,31 @@ Future<bool> requestPermissionsContactsAndCall() async {
   } else {
     print('Permisos para contactos y llamadas denegados');
     return false;
+  }  
+}
+
+Future<void> requestAlarmPermission() async {
+  var status = await Permission.scheduleExactAlarm.status;
+
+  if(status.isDenied){
+    status = await Permission.scheduleExactAlarm.request();
+
+    if(status.isGranted){
+      print("Permiso de alarma: $status");
+    }
+  }     
+}
+
+Future<void> requestVideoCameraPermission() async {
+  
+  var status = await Permission.camera.status;
+
+  if(status.isDenied){
+    print('permiso de camara denegado');
+    status = await Permission.camera.request();
+
+    if(status.isGranted){
+      print("Permiso de camara: $status");
+    }
   }
 }
